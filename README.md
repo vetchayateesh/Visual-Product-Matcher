@@ -150,9 +150,9 @@ Contributions are welcome!
 Fork the repository
 
 Create your feature branch
-
+```bash
 git checkout -b feature/your-feature
-
+```
 
 Commit your changes
 
