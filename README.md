@@ -1,29 +1,71 @@
-# Visual Product Matcher  
-*A visual product-matching web application for catalog & e-commerce use.*
+# Visual Product Matcher
 
-![Image](https://www.ximilar.com/wp-content/uploads/bis-images/18938/demo-products-1280x880.webp)
-
-![Image](https://cdn.prod.website-files.com/62394190881c5c73f9582719/6683f4aa8c96c5da9f3a6856_668153627bc34bfabbe68a8c_Screenshot%202024-06-30%20at%2010.45.08%E2%80%AFPM-p-1600.png)
-
-![Image](https://www.researchgate.net/publication/258325682/figure/fig1/AS%3A638175919763456%401529164404186/Architecture-of-the-visual-product-image-search-system.png)
+**Visual Product Matcher** is a web application that helps users find visually similar products by uploading an image. It’s designed for e-commerce and catalog-matching use cases, combining a modern frontend with image matching logic.
 
 ---
 
-## 🚀 Project Overview  
-Visual Product Matcher allows users to **upload a product image** and instantly find **visually similar items** from a catalog.  
-The project demonstrates how **image matching**, **UI design**, and **modern web architecture** come together to build a real-world product discovery tool.
+## 🧾 Table of Contents
+
+1. [Motivation](#motivation)  
+2. [Features](#features)  
+3. [Architecture & Tech Stack](#architecture--tech-stack)  
+4. [Getting Started](#getting-started)  
+   - [Prerequisites](#prerequisites)  
+   - [Installation](#installation)  
+   - [Running Locally](#running-locally)  
+   - [Building for Production](#building-for-production)  
+5. [How It Works](#how-it-works)  
+6. [Future Roadmap](#future-roadmap)  
+7. [Contributing](#contributing)  
+8. [License](#license)  
+9. [Contact](#contact)  
 
 ---
 
-## 🧠 Key Features  
-- Upload or select a product image  
-- Returns visually similar product matches  
-- Next.js + React-based modern frontend  
-- Tailwind CSS for fast, responsive UI  
-- Modular structure (components + libraries)  
-- TypeScript for type safety  
-- Ready to integrate with ML/AI-based image processing backend in future  
+## Motivation
+
+- Many e-commerce platforms lack a user-friendly way to visually search for similar products.
+- Customer experience can improve significantly by enabling “search by image” to discover visually matching items.
+- This project is an exploration of combining frontend technologies with image-feature matching to build a real-world, scalable prototype.
 
 ---
 
-## 🗂️ Project Structure  
+## Features
+
+- Upload a product image (or select from existing ones)  
+- Find visually similar items from a catalog  
+- Display matching results with similarity scores  
+- Responsive and modern UI  
+- Modular, maintainable codebase built with best practices  
+- Easily extensible to integrate backend services for feature extraction and vector search  
+
+---
+
+## Architecture & Tech Stack
+
+- **Frontend**: Next.js (React) with TypeScript  
+- **Styling**: Tailwind CSS  
+- **State Management & Routing**: Next.js built-in  
+- **Image Matching (Planned)**: Integration with feature-extraction (e.g., CNN / feature-embedding) + similarity search (vector DB)  
+- **Linting / Formatting**: ESLint + Prettier  
+- **Deployment Target**: Vercel / Netlify / Any static / server-side host  
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (recommended v16+)  
+- npm or Yarn  
+
+---
+
+### Installation
+
+```bash
+git clone https://github.com/vetchayateesh/Visual-Product-Matcher.git  
+cd Visual-Product-Matcher  
+npm install  
+# or  
+yarn install  
