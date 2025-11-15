@@ -87,16 +87,15 @@ cd Visual-Product-Matcher
 npm install
 # or
 yarn install
-
 ```
+---
+
 ## Running Locally
 
 ```
-
 npm run dev
 # or
 yarn dev
-
 ```
 ---
 
@@ -106,7 +105,7 @@ npm run build
 ```
 ---
 
-How It Works
+## How It Works
 
 User uploads or selects a product image
 
@@ -142,7 +141,9 @@ Add unit & integration testing
 
 CI/CD pipelines
 
-Contributing
+---
+
+## Contributing
 
 Contributions are welcome!
 
@@ -160,6 +161,8 @@ Push to your fork
 Open a Pull Request
 
 Please follow the existing code structure and conventions.
+
+---
 
 ## License
 
