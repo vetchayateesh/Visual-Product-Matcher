@@ -165,7 +165,9 @@ Please follow the existing code structure and conventions.
 
 This project is open-source and released under the MIT License.
 
-Contact
+---
+
+## Contact
 
 Author: Yateesh
 
@@ -174,3 +176,5 @@ GitHub: https://github.com/vetchayateesh
 LinkedIn: (Add your link here)
 
 Email: (Add your email if you want)
+
+---
