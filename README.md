@@ -176,8 +176,8 @@ Author: Yateesh
 
 GitHub: https://github.com/vetchayateesh
 
-LinkedIn: (Add your link here)
+LinkedIn: https://www.linkedin.com/in/yateesh-vetcha-536a97281/
 
-Email: (Add your email if you want)
+Email: vetchayateesh2004@gmail.com
 
 ---
