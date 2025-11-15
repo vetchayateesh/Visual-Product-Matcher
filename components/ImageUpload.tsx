@@ -54,7 +54,7 @@ export default function ImageUpload({
 
       setPreview(urlInput);
       onImageUpload(null, urlInput);
-    } catch (err) {
+    } catch {
       setError("Failed to load image from URL. Please check the URL and try again.");
     }
   };
@@ -84,26 +84,38 @@ export default function ImageUpload({
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div style={{width: '100%', backgroundColor: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: '1rem', padding: '2rem'}}>
       {/* Tabs */}
-      <div className="flex border-b border-gray-200 mb-6">
+      <div style={{display: 'flex', borderBottom: '1px solid #e5e7eb', marginBottom: '1.5rem'}}>
         <button
           onClick={() => setActiveTab("upload")}
-          className={`px-4 py-2 font-medium transition ${
-            activeTab === "upload"
-              ? "border-b-2 border-blue-600 text-blue-600"
-              : "text-gray-600 hover:text-gray-900"
-          }`}
+          style={{
+            padding: '1rem',
+            fontWeight: '600',
+            transition: 'all 0.2s',
+            borderBottom: activeTab === "upload" ? '2px solid #000000' : '2px solid transparent',
+            color: activeTab === "upload" ? '#000000' : '#9ca3af',
+            backgroundColor: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '1rem'
+          }}
         >
           Upload Image
         </button>
         <button
           onClick={() => setActiveTab("url")}
-          className={`px-4 py-2 font-medium transition ${
-            activeTab === "url"
-              ? "border-b-2 border-blue-600 text-blue-600"
-              : "text-gray-600 hover:text-gray-900"
-          }`}
+          style={{
+            padding: '1rem',
+            fontWeight: '600',
+            transition: 'all 0.2s',
+            borderBottom: activeTab === "url" ? '2px solid #000000' : '2px solid transparent',
+            color: activeTab === "url" ? '#000000' : '#9ca3af',
+            backgroundColor: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '1rem'
+          }}
         >
           Image URL
         </button>
@@ -111,39 +123,62 @@ export default function ImageUpload({
 
       {/* Upload Tab */}
       {activeTab === "upload" && (
-        <div className="space-y-4">
+        <div>
           <div
             onDragOver={handleDragOver}
             onDrop={handleDrop}
             onClick={() => fileInputRef.current?.click()}
-            className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-blue-500 transition bg-gray-50 hover:bg-blue-50"
+            style={{
+              border: '2px dashed #d1d5db',
+              borderRadius: '1rem',
+              padding: '2rem',
+              textAlign: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              backgroundColor: '#ffffff',
+              minHeight: '200px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            onMouseEnter={(e) => {
+              (e.target as HTMLElement).style.borderColor = '#9ca3af';
+              (e.target as HTMLElement).style.backgroundColor = '#f3f4f6';
+            }}
+            onMouseLeave={(e) => {
+              (e.target as HTMLElement).style.borderColor = '#d1d5db';
+              (e.target as HTMLElement).style.backgroundColor = '#ffffff';
+            }}
           >
-            <div className="space-y-2">
-              <svg
-                className="mx-auto h-12 w-12 text-gray-400"
-                stroke="currentColor"
-                fill="none"
-                viewBox="0 0 48 48"
-              >
-                <path
-                  d="M28 8H12a4 4 0 00-4 4v20a4 4 0 004 4h24a4 4 0 004-4V20m-8-8l-6-6m0 0l-6 6m6-6v16"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <p className="text-gray-600">
-                <span className="font-medium text-blue-600">Click to upload</span> or
-                drag and drop
-              </p>
-              <p className="text-sm text-gray-500">PNG, JPG, GIF up to 10MB</p>
+            <div style={{marginBottom: '1rem', color: '#374151', fontSize: '1rem'}}>
+              Drop your product photo here
+            </div>
+            <button
+              disabled={isLoading}
+              style={{
+                backgroundColor: '#000000',
+                color: '#ffffff',
+                padding: '0.5rem 1.5rem',
+                borderRadius: '0.375rem',
+                border: 'none',
+                fontWeight: '600',
+                cursor: isLoading ? 'not-allowed' : 'pointer',
+                transition: 'all 0.2s',
+                opacity: isLoading ? 0.6 : 1
+              }}
+            >
+              Browse files
+            </button>
+            <div style={{marginTop: '1rem', fontSize: '0.875rem', color: '#9ca3af'}}>
+              PNG, JPG, GIF up to 10MB
             </div>
             <input
               ref={fileInputRef}
               type="file"
               accept="image/*"
               onChange={handleFileChange}
-              className="hidden"
+              style={{display: 'none'}}
               disabled={isLoading}
             />
           </div>
@@ -152,47 +187,67 @@ export default function ImageUpload({
 
       {/* URL Tab */}
       {activeTab === "url" && (
-        <div className="space-y-4">
-          <div className="flex gap-2">
-            <input
-              type="url"
-              placeholder="Enter image URL (e.g., https://example.com/image.jpg)"
-              value={urlInput}
-              onChange={(e) => setUrlInput(e.target.value)}
-              onKeyPress={(e) => e.key === "Enter" && handleUrlSubmit()}
-              disabled={isLoading}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
-            />
-            <button
-              onClick={handleUrlSubmit}
-              disabled={isLoading || !urlInput.trim()}
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 transition font-medium"
-            >
-              {isLoading ? "Loading..." : "Load"}
-            </button>
-          </div>
+        <div style={{display: 'flex', gap: '0.5rem'}}>
+          <input
+            type="url"
+            placeholder="https://example.com/image.jpg"
+            value={urlInput}
+            onChange={(e) => setUrlInput(e.target.value)}
+            onKeyPress={(e) => e.key === "Enter" && handleUrlSubmit()}
+            disabled={isLoading}
+            style={{
+              flex: 1,
+              padding: '0.75rem 1rem',
+              border: '1px solid #d1d5db',
+              borderRadius: '0.5rem',
+              backgroundColor: '#ffffff',
+              color: '#000000',
+              fontSize: '1rem',
+              outline: 'none',
+              transition: 'all 0.2s'
+            }}
+            onFocus={(e) => (e.target.style.borderColor = '#000000')}
+            onBlur={(e) => (e.target.style.borderColor = '#d1d5db')}
+          />
+          <button
+            onClick={handleUrlSubmit}
+            disabled={isLoading || !urlInput.trim()}
+            style={{
+              backgroundColor: '#000000',
+              color: '#ffffff',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '0.5rem',
+              border: 'none',
+              fontWeight: '600',
+              cursor: (isLoading || !urlInput.trim()) ? 'not-allowed' : 'pointer',
+              opacity: (isLoading || !urlInput.trim()) ? 0.6 : 1,
+              transition: 'all 0.2s'
+            }}
+          >
+            {isLoading ? "Loading..." : "Load"}
+          </button>
         </div>
       )}
 
       {/* Error Message */}
       {error && (
-        <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+        <div style={{marginTop: '1rem', padding: '1rem', backgroundColor: '#fee2e2', border: '1px solid #fecaca', borderRadius: '0.5rem', color: '#991b1b', fontSize: '0.875rem'}}>
           {error}
         </div>
       )}
 
       {/* Preview */}
       {preview && (
-        <div className="mt-6">
-          <h3 className="text-sm font-medium text-gray-700 mb-3">
+        <div style={{marginTop: '1.5rem'}}>
+          <div style={{fontSize: '0.875rem', fontWeight: '600', color: '#374151', marginBottom: '0.75rem'}}>
             Uploaded Image Preview
-          </h3>
-          <div className="relative w-full h-64 bg-gray-100 rounded-lg overflow-hidden">
+          </div>
+          <div style={{position: 'relative', width: '100%', height: '200px', borderRadius: '0.75rem', overflow: 'hidden', border: '1px solid #e5e7eb', backgroundColor: '#f3f4f6'}}>
             <Image
               src={preview}
               alt="Preview"
               fill
-              className="object-contain"
+              style={{objectFit: 'cover'}}
               unoptimized
             />
           </div>

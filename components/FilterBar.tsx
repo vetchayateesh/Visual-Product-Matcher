@@ -18,51 +18,65 @@ export default function FilterBar({
   resultCount,
 }: FilterBarProps) {
   return (
-    <div className="w-full max-w-2xl mx-auto space-y-4">
+    <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
       {/* Results Counter */}
-      <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-        <p className="text-sm text-blue-700">
-          <span className="font-semibold">{resultCount}</span> similar products found
+      <div style={{padding: '1rem', border: '1px solid #e5e7eb', borderRadius: '0.75rem', background: '#f9fafb'}}>
+        <p style={{fontSize: '0.875rem', color: '#374151', margin: 0}}>
+          <span style={{fontWeight: '700', color: '#000000'}}>{resultCount}</span> similar products found
         </p>
       </div>
 
       {/* Similarity Score Filter */}
-      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-        <label className="block text-sm font-medium text-gray-700 mb-3">
+      <div style={{padding: '1rem', border: '1px solid #e5e7eb', borderRadius: '0.75rem', background: '#f9fafb'}}>
+        <label style={{display: 'block', fontSize: '0.875rem', fontWeight: '700', color: '#374151', marginBottom: '1rem'}}>
           Minimum Similarity Score
         </label>
-        <div className="space-y-3">
+        <div style={{display: 'flex', flexDirection: 'column', gap: '0.75rem'}}>
           <input
             type="range"
             min="0"
             max="100"
             value={similarityThreshold}
             onChange={(e) => onThresholdChange(parseInt(e.target.value))}
-            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+            style={{
+              width: '100%',
+              height: '0.5rem',
+              borderRadius: '0.25rem',
+              background: '#e5e7eb',
+              outline: 'none',
+              cursor: 'pointer',
+              accentColor: '#000000'
+            }}
           />
-          <div className="flex justify-between items-center">
-            <span className="text-xs text-gray-500">Low similarity</span>
-            <span className="text-sm font-semibold text-blue-600">
+          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+            <span style={{fontSize: '0.75rem', color: '#9ca3af'}}>Low similarity</span>
+            <span style={{fontSize: '0.875rem', fontWeight: '700', color: '#000000'}}>
               {similarityThreshold}%
             </span>
-            <span className="text-xs text-gray-500">High similarity</span>
+            <span style={{fontSize: '0.75rem', color: '#9ca3af'}}>High similarity</span>
           </div>
         </div>
       </div>
 
       {/* Category Filter */}
-      <div className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-        <label className="block text-sm font-medium text-gray-700 mb-3">
+      <div style={{padding: '1rem', border: '1px solid #e5e7eb', borderRadius: '0.75rem', background: '#f9fafb'}}>
+        <label style={{display: 'block', fontSize: '0.875rem', fontWeight: '700', color: '#374151', marginBottom: '1rem'}}>
           Filter by Category
         </label>
-        <div className="flex flex-wrap gap-2">
+        <div style={{display: 'flex', flexWrap: 'wrap', gap: '0.5rem'}}>
           <button
             onClick={() => onCategoryChange("")}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition ${
-              selectedCategory === ""
-                ? "bg-blue-600 text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-            }`}
+            style={{
+              padding: '0.5rem 1rem',
+              borderRadius: '9999px',
+              fontSize: '0.875rem',
+              fontWeight: '600',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              backgroundColor: selectedCategory === "" ? '#000000' : '#e5e7eb',
+              color: selectedCategory === "" ? '#ffffff' : '#374151'
+            }}
           >
             All Categories
           </button>
@@ -70,11 +84,17 @@ export default function FilterBar({
             <button
               key={category}
               onClick={() => onCategoryChange(category)}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition ${
-                selectedCategory === category
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
+              style={{
+                padding: '0.5rem 1rem',
+                borderRadius: '9999px',
+                fontSize: '0.875rem',
+                fontWeight: '600',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                backgroundColor: selectedCategory === category ? '#000000' : '#e5e7eb',
+                color: selectedCategory === category ? '#ffffff' : '#374151'
+              }}
             >
               {category}
             </button>
